@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-icon name="home-outline" [routerLink]="['/']" style="font-size: 1.5rem; padding: 16px;"></ion-icon>
+        </ion-buttons>
+        <ion-title>
+            <div class="hcs">
+                <span>Menu </span>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-segment scrollable (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="{{category?.name}}" *ngFor="let category of categories">
+                {{ category?.name }}
+            </ion-segment-button>
+        </ion-segment>
+    </ion-card>
+    <br>
+
+    <ion-spinner *ngIf="spinner"></ion-spinner>
+
+    <ion-item button *ngFor="let product of products" [routerLink]="['/', 'product', product._id]" style="box-shadow: 8px 8px 8px -9px; margin-bottom: 3px; margin: 3px;">
+        <ion-thumbnail slot="end">
+            <img src="{{ product?.image ||'assets/logo.jpg' }}">
+        </ion-thumbnail>
+        <ion-label style="padding-right: 2rem;">
+            <h5 class="ion-text-uppercase">{{product?.name}}</h5>
+            <p style="padding: .5rem 0;">{{product?.description}}</p>
+            <h3 style="color: #375e60; font-weight: 600;">{{product?.price | currency:"EG ":"symbol"}}</h3>
+        </ion-label>
+    </ion-item>
+
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row class="ion-align-items-center">
+            <ion-col size="6" class="ion-text-center">
+                <ion-button [routerLink]="['/', 'cart']">
+                    {{ 'footer.OpenCart' | translate }}
+                    <ion-icon name="cart-outline"></ion-icon> {{ cartItems?.length }}
+                </ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+                {{ 'footer.total' | translate }} {{ cartTotal | currency:"EG ":"symbol" }}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

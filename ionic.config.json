@@ -1,0 +1,7 @@
+{
+  "name": "suparbots_client",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

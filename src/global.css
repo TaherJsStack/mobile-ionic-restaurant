@@ -1,0 +1,44 @@
+@import url(~@ionic/angular/css/core.css);
+@import url(~@ionic/angular/css/normalize.css);
+@import url(~@ionic/angular/css/structure.css);
+@import url(~@ionic/angular/css/typography.css);
+@import url(~@ionic/angular/css/display.css);
+@import url(~@ionic/angular/css/padding.css);
+@import url(~@ionic/angular/css/float-elements.css);
+@import url(~@ionic/angular/css/text-alignment.css);
+@import url(~@ionic/angular/css/text-transformation.css);
+@import url(~@ionic/angular/css/flex-utils.css);
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+* {
+  font-family: "aeAlHor";
+  font-weight: bold;
+}
+@font-face {
+  font-family: "aeAlHor";
+  src: url("./assets/fonts/ae_AlHor.ttf");
+}
+@font-face {
+  font-family: "aeArab";
+  src: url("./assets/fonts/ae_Arab.ttf");
+}
+ion-footer {
+  box-shadow: 8px 8px 20px 4px #b1b1b1;
+  background-color: #0277bd;
+  color: #fff;
+  height: 3.5rem;
+  line-height: 2rem;
+}
+.mat-form-field-appearance-legacy,
+.mat-form-field-wrapper {
+  padding: 0 !important;
+}
+.mat-form-field-infix {
+  padding: 2.5 !important;
+}
+.mat-form-field-infix {
+  padding-top: 0 !important;
+}
+.mat-form-field-appearance-legacy,
+.mat-form-field-underline {
+  background-color: transparent !important;
+}

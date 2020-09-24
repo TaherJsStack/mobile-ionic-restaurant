@@ -1,0 +1,16 @@
+ion-content .vison {
+  text-align: center;
+  width: 21rem;
+  margin: auto;
+}
+ion-content .vison h5 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+ion-content .vison .logo-img {
+  width: 7rem;
+  margin: 25px auto 28px;
+}
+ion-content .vison .logo-img img {
+  margin: auto;
+}

@@ -1,0 +1,134 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ 'footer.checkout' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="onSendOrder()" [formGroup]="orderForm">
+        <br>
+        <div class="container">
+            <ion-grid>
+                <h5>{{ 'pages.order' | translate }}</h5>
+                <ion-row *ngFor="let cartItem of cartItems">
+                    <ion-col size="1"> {{ cartItem.clientItems }}</ion-col>
+                    <ion-col size="1">  X </ion-col>
+                    <ion-col size="4"> {{ cartItem.name }} </ion-col>
+                    <ion-col size="3"> </ion-col>
+                    <ion-col size="3"> {{ cartItem.clientItems * cartItem.price | currency:"EG ":"symbol"}} </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="2"> </ion-col>
+                    <ion-col size="4"> </ion-col>
+                    <ion-col size="3">{{ 'pages.subTotal' | translate }} </ion-col>
+                    <ion-col size="3" style="color: rgb(46, 124, 155); font-weight: 600;"> {{cartTotal | currency:"EG ":"symbol"}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="2"> </ion-col>
+                    <ion-col size="4"> </ion-col>
+                    <ion-col size="3">{{ 'pages.delivery' | translate }} </ion-col>
+                    <ion-col size="3" *ngIf="delivery > 0"> {{delivery | currency:"EG ":"symbol"}} </ion-col>
+                    <ion-col size="3" *ngIf="delivery == 0">{{ 'pages.selectArea' | translate }} </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="2"> </ion-col>
+                    <ion-col size="4"> </ion-col>
+                    <ion-col size="3">{{ 'pages.total' | translate }}</ion-col>
+                    <ion-col size="3" style="color: blue; font-weight: 600;"> {{delivery + cartTotal | currency:"EG ":"symbol"}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+        <div class="container">
+            <ion-grid>
+                <h5>{{ 'pages.PaymentMethod' | translate }}</h5>
+                <!-- <ion-radio-group (ionChange)="radioChangeState($event)">
+        <ion-item>
+          <ion-label>Card</ion-label>
+          <ion-radio slot="start" value="card" name='m'></ion-radio>
+        </ion-item>
+        <div class="cardInput" *ngIf="isCardInput">
+          <ion-row>
+            <ion-col size="7">
+              <ion-input placeholder="card number"></ion-input>
+            </ion-col>
+            <ion-col size="3">
+              <ion-input placeholder="MM/YY"></ion-input>
+            </ion-col>
+            <ion-col size="2">
+              <ion-input placeholder="CVC"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-item> -->
+                <ion-label>{{ 'pages.cashOnDelivery' | translate }}</ion-label>
+                <!-- <ion-radio slot="start" value="deliveryCash" name='m'></ion-radio>
+        </ion-item>
+      </ion-radio-group> -->
+            </ion-grid>
+        </div>
+
+        <div class="container">
+            <ion-grid class="personalInformation">
+                <h5>{{ 'pages.personalInfo' | translate }}</h5>
+                <ion-item>
+                    <ion-label>{{ 'pages.name' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.phoneNo' | translate }}</ion-label>
+                    <ion-input type="number" formControlName="phone"></ion-input>
+
+                    <p class="error" *ngIf="orderForm.get('phone').invalid && (orderForm.get('phone').dirty || orderForm.get('phone').touched)">
+                        <ng-container *ngIf="orderForm.get('phone').hasError('required')">
+                            {{ 'pages.phoneRequired' | translate }}
+                        </ng-container>
+                    </p>
+
+                </ion-item>
+                <h5>{{ 'pages.Address' | translate }}</h5>
+                <ion-item>
+                    <ion-label>{{ 'pages.area' | translate }}</ion-label>
+                    <ion-select cancelText="cancel" formControlName="area" placeholder="Select area" (ionChange)="selectArea($event)">
+                        <ion-select-option *ngFor="let region of regions" value="{{region.area}}">{{region.area}}
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.StreetNo' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="streetNo"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.BuildingNo' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="buildingNo"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.FloorNo' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="floorNo"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.ApartmentNo' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="apartmentNo"></ion-input>
+                </ion-item>
+            </ion-grid>
+        </div>
+        <ion-button id="submitOrderButton" type="submit">submitOrder</ion-button>
+    </form>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row class="ion-align-items-center">
+            <ion-col class="ion-text-center">
+                <ion-button type="button" (click)="onSubmitOrder()">
+                    <p>{{ 'footer.checkout' | translate }} <span> {{delivery + cartTotal | currency:"EG ":"symbol"}} </span></p>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

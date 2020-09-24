@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Orders Codes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-spinner *ngIf="spinner"></ion-spinner> -->
+
+  <ion-item *ngFor="let notification of notifications; let i = index">
+
+    <ion-label [ngClass]="{'isNotiClicked' : notification.userOpenNoti === false}"> <!--  -->
+      <span class="">{{notification.created_at | date}} / {{ notification.created_at | date:'shortTime' }}</span >
+      <p style="padding: .5rem 0;">
+        order code is:
+        <strong (click)="onCodeCopy(notification.orderCode)"> 
+          {{ notification.orderCode }}</strong></p>
+      <h3 style="color: #375e60; font-weight: 600;">client name: {{ notification?.client?.name }}</h3>
+    </ion-label>
+  </ion-item>
+
+</ion-content>

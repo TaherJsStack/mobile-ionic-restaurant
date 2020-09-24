@@ -1,0 +1,166 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="hcs">
+                <span>{{product?.name}} </span>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <ion-thumbnail slot="end">
+                <img src="{{ product.image }}">
+            </ion-thumbnail>
+            <ion-label style="padding-right: 2rem;">
+                <h5 class="ion-text-uppercase">{{product?.name}}</h5>
+                <p style="padding: .5rem 0; font-family: 'FishermanBold';">{{product?.description}}</p>
+                <h3 style="color: #FAA844; font-weight: 600;">{{product?.price | currency:"EG ":"symbol"}} EG</h3>
+            </ion-label>
+        </ion-item>
+        <div class="productOptions" *ngIf="productOptions">
+            <h6>options </h6>
+            <p *ngFor="let option of productOptions; let i = index">{{ option }} </p>
+        </div>
+    </ion-card>
+
+    <mat-accordion>
+        <mat-expansion-panel *ngIf="product?.haveSize">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ 'pages.Combo' | translate }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ion-checkbox [disabled]="checkedBigCombo" color="primary" value="14" (ionChange)="bigCombo($event)"></ion-checkbox>
+            <ion-label>{{ 'pages.Large2' | translate }}</ion-label>
+            <br>
+            <ion-checkbox [disabled]="checkedSmallCombo" color="primary" value="12" (ionChange)="smallCombo($event)"> </ion-checkbox>
+            <ion-label> {{ 'pages.Medium2' | translate }}</ion-label>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="product?.haveFlavor">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ 'pages.SpicyOrNot' | translate }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ion-radio-group (ionChange)="haveFlavor($event)">
+                <ion-item>
+                    <ion-label> {{ 'pages.Spicy' | translate }}‏</ion-label>
+                    <ion-radio slot="start" value="Spicy" name='f'></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label> {{ 'pages.Regular' | translate }}</ion-label>
+                    <ion-radio slot="start" value="Regular" name='f'></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+    <ion-card>
+        <ion-item>
+            <ion-label position="floating"> {{ 'pages.SpecialRequest' | translate }}</ion-label>
+            <ion-textarea #s (ionChange)="specialRequest($event)" placeholder='|...'></ion-textarea>
+        </ion-item>
+    </ion-card>
+
+    <ion-grid>
+
+        <ion-row class="ion-align-items-center" *ngIf="isBought(product)">
+
+            <ion-col size="4" class="ion-text-center">
+                <ion-button (click)="onAdd(product)" size="small">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center">
+                <span *ngIf="product.clientItems > 0"> {{ product.clientItems }} </span>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center">
+                <ion-button (click)="onRemove(product, product._id)" size="small">
+                    <ion-icon name="remove"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" *ngIf="!isBought(product)">
+
+            <ion-col size="4" class="ion-text-center" *ngIf="itemsCount">
+                <ion-button (click)="onAdd(product)" size="small">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center" *ngIf="!itemsCount">
+                <ion-button (click)="isItemsCount(true)" size="small">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center">
+                <span *ngIf="!itemsCount"> 0 </span>
+                <span *ngIf="itemsCount"> {{ product.clientItems }}</span>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center" *ngIf="itemsCount && product.clientItems == 1">
+                <ion-button (click)="isItemsCount(false)" size="small">
+                    <ion-icon name="remove"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center" *ngIf="itemsCount  && product.clientItems > 1">
+                <ion-button (click)="onRemove(product, product._id)" size="small">
+                    <ion-icon name="remove"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col size="4" class="ion-text-center" *ngIf="!itemsCount">
+                <ion-button (click)="onRemove(product, product._id)" size="small">
+                    <ion-icon name="remove"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+    <div class="addToCart">
+        <ion-row class="ion-align-items-center">
+            <ion-button (click)="addToCart(product)" size="small" [disabled]="!itemsCount" *ngIf="!isBought(product)">
+                {{ 'pages.AddToCart' | translate }}
+            </ion-button>
+            <ion-button (click)="onDeleteProduct(product?._id)" size="small" *ngIf="isBought(product) && itemsCount" fill="outline" color="danger">
+                {{ 'pages.DeleteItem' | translate }}
+            </ion-button>
+        </ion-row>
+    </div>
+
+    <br>
+
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row class="ion-align-items-center">
+            <ion-col size="6" class="ion-text-center" [routerLink]="['/', 'cart']">
+                <ion-button>
+                    {{ 'footer.OpenCart' | translate }}
+                    <ion-icon name="cart-outline"></ion-icon> {{ cartItems?.length }}
+                </ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+                {{ 'footer.total' | translate }} {{ cartTotal | currency:"EG ":"symbol" }}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

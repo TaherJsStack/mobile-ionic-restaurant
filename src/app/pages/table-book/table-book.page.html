@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>table book</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <br>
+    <form (ngSubmit)="onSendOrder()" [formGroup]="bookingForm">
+        <div class="container">
+            <ion-grid class="personalInformation">
+                <h5>{{ 'pages.personalInfo' | translate }}</h5>
+                <ion-item>
+                    <ion-label>{{ 'pages.name' | translate }}</ion-label>
+                    <ion-input type="text" formControlName="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{ 'pages.phoneNo' | translate }}</ion-label>
+                    <ion-input type="number" formControlName="phone"></ion-input>
+                    <p class="error" *ngIf="bookingForm.get('phone').invalid && (bookingForm.get('phone').dirty || bookingForm.get('phone').touched)">
+                        <ng-container *ngIf="bookingForm.get('phone').hasError('required')">
+                            {{ 'pages.phoneRequired' | translate }}
+                        </ng-container>
+                    </p>
+                </ion-item>
+            </ion-grid>
+        </div>
+
+        <div class="container">
+            <ion-grid class="personalInformation">
+                <h5>{{ 'pages.personalInfo' | translate }}</h5>
+                <ion-item>
+                    <ion-label>chairs Count</ion-label>
+                    <ion-input type="number" formControlName="chairCounts"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label> date</ion-label>
+                    <ion-button (click)="showDatepicker()">
+                        <p *ngIf="bookingDate">Date: {{ bookingDate}}</p>
+                        <p *ngIf="!bookingDate">select date</p>
+                    </ion-button>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label> Time</ion-label>
+                    <ion-button (click)="showTimepicker()">
+                        <p *ngIf="bookingTime">Time: {{bookingTime}}</p>
+                        <p *ngIf="!bookingTime">select time</p>
+                    </ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating"> {{ 'pages.SpecialRequest' | translate }}</ion-label>
+                    <ion-textarea formControlName="bookingNote" placeholder='add some notes...'></ion-textarea>
+                </ion-item>
+            </ion-grid>
+        </div>
+
+        <ion-button id="submitBook" type="submit"></ion-button>
+    </form>
+
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row class="ion-align-items-center">
+            <ion-col class="ion-text-center">
+                <ion-button type="button" (click)="onSubmitBook()">
+                    <p>cerating book</p>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

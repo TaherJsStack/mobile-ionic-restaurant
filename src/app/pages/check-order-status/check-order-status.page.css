@@ -1,0 +1,14 @@
+ion-content .order {
+  width: 80%;
+  margin: auto;
+}
+ion-content .order-status {
+  width: 19rem;
+  margin: auto;
+}
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+.mat-form-field {
+  margin-top: 16px;
+}

@@ -1,0 +1,50 @@
+{
+    "head": {
+        "cart": "سلة المشتریات"
+    },
+
+    "pages": {
+        "OpenCart": "إفتح سلة المشتریات",
+        "Cart": "سلة المشتریات",
+        "order": "الطلب",
+        "Spicy": "حار",
+        "Regular": "عادي",
+        "SpecialRequest": "(طلب خاص؟ (إختیاري",
+        "SpicyOrNot": "حار أو عادي",
+        "AddToCart": "أضف للسلة",
+        "DeleteItem": "حذف الصنف",
+        "Combo": "كومبو",
+        "Large": "كبیر",
+        "Medium": "وسط",
+        "Large2": "كومبو كبير 14 جنيه",
+        "Medium2": "كومبو صغير 12 جنيه",
+        "Checkout": "تنفیذ الطلب",
+        "PaymentMethod": "طریقة الدفع",
+        "subTotal": "المجموع الفرعي",
+        "delivery": "التوصيل",
+        "total": " المجموع الإجمالي",
+        "cashOnDelivery": "الدفع عندالتسليم",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "personalInfo": "معلومات شخصية",
+        "name": "الاسم",
+        "phoneNo": "رقم الهاتف",
+        "area": "المنطقة",
+        "selectArea": " اختر منطقة",
+        "Address": "العنوان",
+        "StreetNo": "رقم الشارع",
+        "BuildingNo": "رقم البنایة",
+        "FloorNo": "رقم الدور",
+        "ApartmentNo": "رقم الشقة",
+        "YourCartIsEmpty": "سلة المشتريات فارغة"
+    },
+
+    "footer": {
+        "OpenCart": " إفتح سلة المشتریات",
+        "total": "المجموع",
+        "addItems": "اضافة منتجات",
+        "checkout": "تنفیذ الطلب",
+        "subTotal": "المجموع الفرعي"
+    }
+
+
+}

@@ -1,0 +1,32 @@
+ion-content {
+  --ion-background-color: #ebebeb;
+  --background: url(../../../assets/7.png) 0 0/100% 100% no-repeat;
+}
+ion-content .obacity {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 16, 16, 0.46);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+ion-content .logo-img {
+  width: 15rem;
+  margin: 11rem auto 28px;
+}
+ion-content .logo-img img {
+  margin: auto;
+}
+ion-content ion-col ion-card {
+  width: 8rem;
+  padding: 24px 0;
+  text-align: center;
+  margin: 1rem auto;
+}
+ion-content ion-col ion-card i,
+ion-content ion-col ion-card span,
+ion-content ion-col ion-card ion-icon {
+  font-size: 58px;
+}

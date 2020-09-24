@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'head.cart' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="cartItems?.length <= 0" class="cartEmpty">
+    <ion-icon name="cart-outline"></ion-icon>
+    <p>{{ 'pages.YourCartIsEmpty' | translate }} </p>
+  </div>
+
+  <div *ngIf="cartItems?.length > 0">
+    <ion-item *ngFor="let cartItem of cartItems ">
+      <ion-thumbnail slot="end">
+        <img src="{{ cartItem?.image }}" onerror="assets/logo.jpg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <ion-button [routerLink]="['/', 'product', cartItem._id]">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="onRemove(cartItem?._id)">
+          <ion-icon name="trash-outline" [style.color]="'#EF3B51'"></ion-icon>
+        </ion-button>
+      </ion-thumbnail>
+      <ion-label style="padding-right: 2rem;">
+        <h5 class="ion-text-uppercase">{{cartItem?.name}}</h5>
+        <h3 style="color: #375e60; font-weight: 600; font-family: 'FishermanHollow-Ydgy';">
+          {{ cartItem?.price }} * {{ cartItem?.clientItems }} =
+          {{ cartItem?.price * cartItem?.clientItems | currency:"EG ":"symbol" }}
+        </h3>
+        <p *ngIf="cartItem?.userOptions" style="padding: .5rem 0; text-overflow: unset; overflow: unset;">
+          {{ cartItem?.userOptions }} </p>
+      </ion-label>
+    </ion-item>
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <p>{{ 'footer.subTotal' | translate }} <span> {{ cartTotal | currency:"EG ":"symbol"}}</span></p>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="6" class="ion-text-center">
+        <ion-button [routerLink]="['/', 'make-order']">
+          {{ 'footer.addItems' | translate }}
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button [routerLink]="['/', 'checkout']" [disabled]="cartTotal <= 0">
+          {{ 'footer.checkout' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

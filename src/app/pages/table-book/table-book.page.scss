@@ -1,0 +1,100 @@
+.container {
+    background-color: #dadada61;
+    margin-bottom: 2px;
+    margin: 2px 11px 4px;
+    border-radius: 4px;
+    h5 {
+        font-size: 1rem;
+        color: gray;
+    }
+    ion-row {
+        ion-col {
+            font-size: 0.8rem;
+        }
+        ion-col:nth-child(3) {
+            color: gray;
+            font-style: italic;
+        }
+    }
+    ion-item {
+        --background: transparent;
+        --border-style: none;
+        --inner-padding-top: 0;
+        --inner-padding-bottom: 0;
+        --padding-top: 0;
+        --padding-bottom: 0;
+        font-size: 0.8rem;
+    }
+    .cardInput {
+        height: 30px;
+        width: 85%;
+        border: 1px solid gray;
+        border-radius: 15px;
+        margin-left: 3rem;
+        ion-input {
+            --padding-bottom: 0;
+            --padding-top: 0;
+        }
+    }
+    .personalInformation {
+        ion-item {
+            --inner-padding-top: 0;
+            --inner-padding-bottom: 0;
+            --padding-top: 0;
+            --padding-bottom: 0;
+            ion-label {
+                // background-color: green;
+                width: 95px;
+            }
+            mat-form-field,
+            ion-select {
+                min-width: 12.5rem;
+                border: 1px solid gray;
+                border-radius: 23px;
+                padding: 6px;
+            }
+            ion-input {
+                border: 1px solid gray;
+                border-radius: 23px;
+                --padding-bottom: 6px;
+                --padding-top: 6px;
+            }
+        }
+    }
+}
+
+#submitBook {
+    display: none;
+    visibility: hidden;
+}
+
+ion-footer {
+    text-align: right !important;
+}
+
+ion-footer {
+    ion-button {
+        --background: #fff;
+        --border-radius: 50px;
+        --padding-start: 0.5rem;
+        --padding-end: 0.5rem;
+        height: 2rem;
+        font-size: 2.5rem;
+        padding: 0;
+        margin: 0;
+        p {
+            text-align: right;
+            margin: 4px 3rem;
+            color: rgb(95, 95, 95);
+            font-style: italic;
+            font-size: 0.7rem;
+            font-weight: 700;
+            span {
+                color: #000000 !important;
+                font-size: 0.9rem;
+                font-style: normal;
+                margin-left: 5px;
+            }
+        }
+    }
+}

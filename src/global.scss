@@ -1,0 +1,104 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
+* {
+  font-family: "aeAlHor";
+  font-family: "Cafe_Francoise_D";
+  // font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+@font-face {
+  font-family: "aeAlHor";
+  src: url("./assets/fonts/ae_AlHor.ttf");
+}
+
+@font-face {
+  font-family: "aeArab";
+  src: url("./assets/fonts/ae_Arab.ttf");
+}
+
+@font-face {
+  font-family: "Cafe_Francoise_D";
+  src: url("./assets/fonts/Cafe_Francoise_D.otf");
+  text-transform: uppercase !important;
+}
+
+@font-face {
+  font-family: "FishermanBold";
+  src: url("./assets/fonts/fisherman-font/FishermanBold-RMgv.ttf");
+}
+
+@font-face {
+  font-family: "FishermanHollow-Ydgy";
+  src: url("./assets/fonts/fisherman-font/FishermanHollow-Ydgy.otf");
+}
+
+
+@font-face {
+  font-family: "Bana-Chips";
+  src: url("./assets/fonts/Bana-Chips.ttf");
+}
+
+.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+  padding-top: 0;
+  text-align: center;
+  color: green;
+  span{
+    font-size: 4rem;
+  }
+}
+
+ion-footer {
+  box-shadow: 8px 8px 20px 4px #b1b1b1;
+  background-color: #faa844;
+  color: #fff;
+  height: 3.5rem;
+  line-height: 2rem;
+}
+
+.mat-form-field-appearance-legacy,
+.mat-form-field-wrapper {
+  padding: 0 !important;
+}
+
+.mat-form-field-infix {
+  padding: 2.5 !important;
+}
+
+.mat-form-field-infix {
+  padding-top: 0 !important;
+}
+
+.mat-form-field-appearance-legacy,
+.mat-form-field-underline {
+  background-color: transparent !important;
+}

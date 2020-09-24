@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon name="notifications-outline" [routerLink]="[ '/', 'notifications']">
+
+      </ion-icon>
+      <ion-badge color="warning">{{notifications}}</ion-badge>
+    </ion-buttons>
+    <ion-title>check order status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="order">
+    <br>
+    <ion-item>
+      <ion-label position="fixed">Order Code</ion-label>
+      <ion-input type="text" #code (ionBlur)="onGetOrderByCode(code.value)" placeholder=".....  "></ion-input>
+    </ion-item>
+  </div>
+
+  <h2 *ngIf="!orderStatus" class="noOrders">please enter order code <p>find all codes on notification</p></h2>
+
+  <div class="timeline" *ngIf="orderStatus">
+
+    <div class="timeline__item">
+      <h3 class="timeline__title">
+        <ion-icon name="clipboard-outline"></ion-icon>order has been sent
+      </h3>
+    </div>
+
+    <div class="timeline__item" [ngClass]="{'notActive' : orderStatus?.isAccept === false}">
+      <h3 class="timeline__title">
+        <ion-icon color="primary" name="document-attach-outline"></ion-icon>order seen
+      </h3>
+    </div>
+
+    <div class="timeline__item" [ngClass]="{'notActive' : orderStatus?.isPrepare === false}">
+      <h3 class="timeline__title">
+        <ion-icon color="secondary" name="people-outline"></ion-icon>preparing order
+      </h3>
+    </div>
+
+    <div class="timeline__item" [ngClass]="{'notActive' : orderStatus?.isOnDelivery === false}">
+      <h3 class="timeline__title">
+        <ion-icon color="secondary" name="trending-up-outline"></ion-icon>delevray way
+      </h3>
+    </div>
+    <div class="timeline__item" [ngClass]="{'notActive' : orderStatus?.isReceived === false}">
+      <h3 class="timeline__title">
+        <ion-icon class="success" name="checkmark-done-outline"></ion-icon>Done
+      </h3>
+      <span>Order Received</span>
+    </div>
+
+  </div>
+
+
+
+</ion-content>

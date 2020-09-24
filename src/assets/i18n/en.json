@@ -1,0 +1,50 @@
+{
+    "head": {
+        "cart": "cart"
+    },
+
+    "pages": {
+        "OpenCart": "Open Cart",
+        "Cart": "Cart ",
+        "order": "order",
+        "Spicy": "Spicy",
+        "Regular": "Regular",
+        "SpecialRequest": "Special Request?",
+        "SpicyOrNot": " SpicyOr Not ",
+        "AddToCart": " Add To Cart",
+        "DeleteItem": "Delete Item ",
+        "Combo": "Combo",
+        "Large": "Large",
+        "Medium": "Medium",
+        "Large2": "Big Combo 14 EG",
+        "Medium2": "Small Combo 12 EG",
+        "Checkout": "Checkout ",
+        "PaymentMethod": "Payment Method",
+        "subTotal": "Sub Total ",
+        "delivery": "Delivery",
+        "total": " Total ",
+        "cashOnDelivery": "Cash On Delivery",
+        "phoneRequired": "Phone Required",
+        "personalInfo": "Personal Info",
+        "name": "Name",
+        "phoneNo": "phone No",
+        "area": "Area",
+        "selectArea": " select Area",
+        "Address": "Address",
+        "StreetNo": "Street No ",
+        "BuildingNo": "Building No ",
+        "FloorNo": "Floor No ",
+        "ApartmentNo": "Apartment No ",
+        "YourCartIsEmpty": "Your Cart Is Empty"
+    },
+
+    "footer": {
+        "OpenCart": "Open Cart",
+        "total": "Total",
+        "addItems": "Add Items",
+        "checkout": "Checkout",
+        "subTotal": "Sub Total "
+    }
+
+
+}

@@ -1,0 +1,57 @@
+.hcs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ion-card {
+  padding: 0.1rem;
+}
+ion-card mat-form-field {
+  width: 100%;
+}
+ion-card .item .sc-ion-label-md-h {
+  white-space: inherit;
+}
+mat-expansion-panel {
+  width: 94%;
+  margin: auto;
+}
+mat-expansion-panel ion-radio-group ion-item {
+  --background: transparent;
+  --border-style: none;
+  --inner-padding-top: 0;
+  --inner-padding-bottom: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  font-size: 0.8rem;
+  height: 35px;
+  margin: 5px;
+}
+.productOptions {
+  padding-left: 1rem;
+}
+.productOptions p {
+  margin: 2px 0;
+}
+.addToCart {
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.addToCart ion-button {
+  margin: auto;
+  width: 15rem;
+}
+ion-footer ion-button {
+  --background: #fff;
+  --border-radius: 50px;
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
+  height: 2.4rem;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 0;
+}
